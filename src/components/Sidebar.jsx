@@ -9,6 +9,7 @@ import {
   X,
   TrendingUp,
 } from 'lucide-react'
+import { brand } from '../data/dashboardData'
 import './Sidebar.css'
 
 const navItems = [
@@ -31,7 +32,7 @@ export default function Sidebar({ isOpen, onClose }) {
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon">CP</div>
-          <span className="logo-text">CPAKing</span>
+          <span className="logo-text">{brand.name}</span>
         </div>
         <button className="close-btn" onClick={onClose} aria-label="Fechar menu">
           <X size={20} />

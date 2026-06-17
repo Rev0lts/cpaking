@@ -6,10 +6,16 @@ import RevenueChart from './components/RevenueChart'
 import CampaignTable from './components/CampaignTable'
 import ActivityFeed from './components/ActivityFeed'
 import PerformanceRing from './components/PerformanceRing'
+import { brand } from './data/dashboardData'
 import './App.css'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const today = new Date().toLocaleDateString('pt-BR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  })
 
   return (
     <div className="app">
@@ -21,8 +27,9 @@ function App() {
         <div className="content">
           <section className="page-header">
             <div>
-              <h1>Dashboard</h1>
-              <p>Visão geral das suas campanhas CPA</p>
+              <p className="page-date">{today}</p>
+              <h1>Olá, {brand.user.name.split(' ')[0]} 👋</h1>
+              <p>{brand.tagline}</p>
             </div>
             <div className="page-actions">
               <button className="btn btn-secondary">Exportar</button>

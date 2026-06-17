@@ -1,13 +1,6 @@
 import { MoreHorizontal } from 'lucide-react'
+import { campaigns } from '../data/dashboardData'
 import './CampaignTable.css'
-
-const campaigns = [
-  { name: 'Black Friday 2025', status: 'active', clicks: '12.4K', conv: '842', revenue: 'R$ 28.450', roi: '312%' },
-  { name: 'App Install - iOS', status: 'active', clicks: '8.9K', conv: '521', revenue: 'R$ 15.200', roi: '198%' },
-  { name: 'Lead Gen - Finanças', status: 'paused', clicks: '5.2K', conv: '310', revenue: 'R$ 9.800', roi: '156%' },
-  { name: 'E-commerce BR', status: 'active', clicks: '22.1K', conv: '1.240', revenue: 'R$ 42.100', roi: '278%' },
-  { name: 'Survey Rewards', status: 'ended', clicks: '3.8K', conv: '189', revenue: 'R$ 4.200', roi: '89%' },
-]
 
 const statusMap = {
   active: { label: 'Ativa', class: 'status-active' },

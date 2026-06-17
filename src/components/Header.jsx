@@ -1,4 +1,5 @@
 import { Menu, Search, Bell, ChevronDown } from 'lucide-react'
+import { brand } from '../data/dashboardData'
 import './Header.css'
 
 export default function Header({ onMenuClick }) {
@@ -21,10 +22,10 @@ export default function Header({ onMenuClick }) {
         </button>
 
         <button className="user-menu">
-          <div className="avatar">JD</div>
+          <div className="avatar">{brand.user.initials}</div>
           <div className="user-info">
-            <span className="user-name">João Dias</span>
-            <span className="user-role">Admin</span>
+            <span className="user-name">{brand.user.name}</span>
+            <span className="user-role">{brand.user.role}</span>
           </div>
           <ChevronDown size={16} className="chevron" />
         </button>
