@@ -34,6 +34,16 @@ export function invalidateDashboardCache() {
     cachedDashboardData = null;
 }
 
+/** Cor estável por plataforma (não muda a cada atualização). */
+const colorFromId = (id) => {
+    const str = String(id ?? '');
+    let hash = 0;
+    for (let i = 0; i < str.length; i += 1) {
+        hash = (hash * 31 + str.charCodeAt(i)) % 360;
+    }
+    return `hsl(${hash}, 70%, 60%)`;
+};
+
 const Dashboard = ({ onNavigate, impersonatedUser, dailyGoal }) => {
     const defaultStats = {
         totalDeposit: 0,
@@ -168,7 +178,7 @@ const Dashboard = ({ onNavigate, impersonatedUser, dailyGoal }) => {
                     id: p.id,
                     name: p.name,
                     profit: 0,
-                    color: `hsl(${Math.random() * 360}, 70%, 60%)`
+                    color: colorFromId(p.id)
                 };
             });
 
@@ -203,6 +213,14 @@ const Dashboard = ({ onNavigate, impersonatedUser, dailyGoal }) => {
             });
 
             applyQuickReportsToChartAggregates(quickReportsData, aggByDate, aggByMonth);
+
+            // Mantém o gráfico coerente com os cards e a barra de meta:
+            // hoje usa o lucro diário global (mesma lógica de ciclos do dashboard).
+            const todayKey = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+            const thisMonthKey = `${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+            const todayDelta = profitStats.dailyProfit - (aggByDate[todayKey] || 0);
+            aggByDate[todayKey] = profitStats.dailyProfit;
+            aggByMonth[thisMonthKey] = (aggByMonth[thisMonthKey] || 0) + todayDelta;
 
             const anoData = [];
             const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];

@@ -572,6 +572,8 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
             ));
 
             if (invalidateCache) invalidateCache();
+            if (platform?.id) broadcastAccountSync(platform.id, syncWindowId.current);
+            fetchGlobalDailyProfit();
         } catch (err) {
             console.error(`Erro ao salvar ${field}:`, err);
             notify(`Erro ao atualizar o valor rápido.`, "error");

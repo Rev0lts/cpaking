@@ -316,7 +316,10 @@ const QuickReport = ({ impersonatedUser, onStatsChange }) => {
                 </button>
             </form>
 
-            <div className="quick-report-totals">
+            <div style={{ marginTop: 24, marginBottom: 4, fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Totais gerais (todo o período) — não é o lucro do dia
+            </div>
+            <div className="quick-report-totals" style={{ marginTop: 0, paddingTop: 12 }}>
                 <div className="quick-report-totals__cell--deposit">
                     <span>Depósitos</span>
                     <strong>{formatCurrency(totals.deposits)}</strong>

@@ -101,6 +101,13 @@ export function useDailyProfitMidnightLock(impersonatedUser, enabled = true) {
                 dateRef.current = today;
             }
 
+            // Grava o snapshot do próprio dia sempre que o valor muda. Assim, quando o dia
+            // vira "passado", o calendário mostra exatamente o que estava ao vivo (com ciclos),
+            // em vez de recalcular por data e divergir.
+            if (stats.dailyProfit !== profitRef.current) {
+                await upsertDailyProfitSnapshot(userId, today, stats.dailyProfit);
+            }
+
             profitRef.current = stats.dailyProfit;
             persistLocalDaily(today, stats.dailyProfit);
         } catch (err) {

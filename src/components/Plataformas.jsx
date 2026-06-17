@@ -270,7 +270,8 @@ const Plataformas = ({ resetTrigger, impersonatedUser, dailyGoal, mode = 'active
 
             const updatedPlatforms = [formattedNewPlat, ...platforms];
             setPlatforms(updatedPlatforms);
-            cachedPlataformasData = updatedPlatforms;
+            cachedPlataformasByMode[mode] = updatedPlatforms;
+            invalidateDashboardCache();
             // Restore default date for the next addition. But getGMT3Date is not hoisted, so let's call it manually.
             const date = new Date();
             const offset = -3;

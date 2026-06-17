@@ -226,9 +226,18 @@ const AdminPanel = ({ onImpersonate }) => {
         try {
             setCleanLoading(true);
             const result = await adminCleanKeepAccounts();
-            notify('Bases limpas. Contas e plataformas foram mantidas.', 'success', 5000);
+            notify('Bases limpas. Atualizando a tela...', 'success', 4000);
             console.info('admin_clean_keep_accounts:', result);
             setCleanModalOpen(false);
+            try {
+                localStorage.removeItem('cpa_daily_profit_date');
+                localStorage.removeItem('cpa_daily_profit_value');
+            } catch {
+                /* ignore */
+            }
+            // Recarrega para garantir que todos os caches (dashboard, plataformas,
+            // calendário) reflitam os dados zerados.
+            setTimeout(() => window.location.reload(), 900);
         } catch (err) {
             console.error('Erro ao limpar bases:', err);
             notify(
