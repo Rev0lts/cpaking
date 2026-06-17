@@ -38,6 +38,7 @@ import {
 } from '../lib/accountPopoutSync';
 import DailyGoalProgress from './DailyGoalProgress';
 import { calculateDashboardProfits } from '../lib/profitCalculations';
+import { fetchUserProfitData } from '../lib/fetchProfitData';
 
 const getGMT3Date = () => {
     const date = new Date();
@@ -122,38 +123,12 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
 
     const fetchGlobalDailyProfit = useCallback(async () => {
         try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
+            // Usa a mesma base do dashboard/calendário (só plataformas ATIVAS +
+            // reporte rápido), garantindo que a barra de meta seja idêntica ao dashboard.
+            const { accounts: accountsForGoal, quickReports: quickReportsData } =
+                await fetchUserProfitData(impersonatedUser);
 
-            const targetUserId = impersonatedUser?.id || user.id;
-
-            let { data: accountsData, error: accError } = await supabase
-                .from('accounts')
-                .select('deposit, withdraw, chest, platform_id, created_at, updated_at, date, tag')
-                .eq('user_id', targetUserId);
-
-            if (accError && (accError.code === '42703' || accError.code === 'PGRST204')) {
-                const { data: fallbackData, error: fallbackError } = await supabase
-                    .from('accounts')
-                    .select('deposit, withdraw, chest, platform_id, created_at, date, tag')
-                    .eq('user_id', targetUserId);
-                if (fallbackError) throw fallbackError;
-                accountsData = fallbackData;
-            } else if (accError) {
-                throw accError;
-            }
-
-            let quickReportsData = [];
-            const { data: quickData, error: quickError } = await supabase
-                .from('quick_reports')
-                .select('type, amount, date, created_at')
-                .eq('user_id', targetUserId);
-
-            if (!quickError) {
-                quickReportsData = quickData || [];
-            }
-
-            const profitStats = calculateDashboardProfits(accountsData || [], quickReportsData);
+            const profitStats = calculateDashboardProfits(accountsForGoal, quickReportsData);
             setGlobalDailyProfit(profitStats.dailyProfit);
         } catch (err) {
             console.error('Erro ao carregar meta do dia (global):', err);
