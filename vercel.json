@@ -1,0 +1,4 @@
+{
+  "name": "cpaking",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
