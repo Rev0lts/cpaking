@@ -33,13 +33,12 @@ const StatCard = ({ title, value, icon, variant = 'default', size = 'medium', va
             }}>
                 <div style={{
                     padding: '10px',
-                    borderRadius: '12px',
-                    background: `linear-gradient(135deg, ${getIconColor()}22, ${getIconColor()}08)`,
+                    borderRadius: '10px',
+                    backgroundColor: `${getIconColor()}14`,
                     color: getIconColor(),
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: `0 4px 16px ${getIconColor()}18`,
                 }}>
                     {icon}
                 </div>

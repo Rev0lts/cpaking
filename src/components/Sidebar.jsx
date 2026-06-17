@@ -224,9 +224,7 @@ const Sidebar = ({ activeTab, onTabChange, hasActivePlan, profile, mobileOpen, o
         .sidebar {
           height: 100vh;
           background: var(--sidebar-bg);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-right: 1px solid rgba(var(--primary-rgb), 0.18);
+          border-right: 1px solid var(--card-border);
           display: flex;
           flex-direction: column;
           padding: 24px 16px;
@@ -237,7 +235,6 @@ const Sidebar = ({ activeTab, onTabChange, hasActivePlan, profile, mobileOpen, o
           transition: transform 0.25s ease, width 0.25s ease, min-width 0.25s ease;
           overflow-x: hidden;
           overflow-y: auto;
-          box-shadow: 4px 0 40px rgba(0, 0, 0, 0.35);
         }
         .sidebar-close-mobile {
           display: none;
@@ -252,8 +249,7 @@ const Sidebar = ({ activeTab, onTabChange, hasActivePlan, profile, mobileOpen, o
         }
         .nav-item:hover:not(.locked):not(.active) {
           color: var(--text-main) !important;
-          background: rgba(var(--primary-rgb), 0.1) !important;
-          border-color: rgba(var(--primary-rgb), 0.2) !important;
+          background: rgba(255, 255, 255, 0.04) !important;
         }
         .nav-item.locked:hover {
           background-color: transparent !important;

@@ -47,27 +47,25 @@ const Auth = () => {
 
     return (
         <div className="auth-page">
-            <div className="auth-page__orb auth-page__orb--1" />
-            <div className="auth-page__orb auth-page__orb--2" />
-            <div className="auth-page__orb auth-page__orb--3" />
+            <div className="auth-page__glow" />
 
             <div className="glass-card auth-page__card animate-fade-in">
                 <div style={{
-                    width: '72px',
-                    height: '72px',
-                    borderRadius: '18px',
-                    background: 'var(--gradient-brand)',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '14px',
+                    background: 'var(--primary)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '24px',
                     color: 'var(--primary-fg)',
-                    boxShadow: '0 8px 28px rgba(var(--primary-rgb), 0.4)',
+                    boxShadow: '0 4px 16px rgba(var(--primary-rgb), 0.35)',
                 }}>
-                    <Lock size={34} />
+                    <Lock size={28} />
                 </div>
 
-                <h1 className="display-font gradient-text" style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '8px', textAlign: 'center' }}>
+                <h1 className="display-font" style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '8px', textAlign: 'center', color: 'var(--text-main)' }}>
                     {isLogin ? 'Bem-vindo de volta' : 'Criar Conta'}
                 </h1>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '32px', textAlign: 'center' }}>

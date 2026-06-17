@@ -43,11 +43,11 @@ const ProfitChart = ({ dataSets }) => {
                 <h3 style={{ fontSize: '1.25rem' }}>Evolução do Lucro</h3>
                 <div style={{
                     display: 'flex',
-                    gap: '8px',
-                    backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
+                    gap: '6px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
                     padding: '4px',
-                    borderRadius: '10px',
-                    border: '1px solid rgba(var(--primary-rgb), 0.15)',
+                    borderRadius: '8px',
+                    border: '1px solid var(--card-border)',
                 }}>
                     {['Semana', 'Mes', 'Ano'].map((f) => (
                         <button

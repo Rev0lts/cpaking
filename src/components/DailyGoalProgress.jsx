@@ -20,15 +20,11 @@ const DailyGoalProgress = ({ dailyProfit = 0, dailyGoal, className = '' }) => {
     const fillStyle = isNegative
         ? {
             width: `${percent}%`,
-            background: 'linear-gradient(90deg, var(--danger), #f43f5e)',
-            boxShadow: percent > 0 ? '0 0 16px rgba(var(--money-negative-rgb), 0.45)' : 'none',
+            background: 'var(--danger)',
         }
         : {
             width: `${percent}%`,
-            background: reached
-                ? 'linear-gradient(90deg, var(--money-positive), var(--secondary))'
-                : 'var(--gradient-brand)',
-            boxShadow: percent > 0 ? '0 0 16px rgba(var(--primary-rgb), 0.5)' : 'none',
+            background: reached ? 'var(--money-positive)' : 'var(--primary)',
         };
 
     return (
