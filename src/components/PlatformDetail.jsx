@@ -267,7 +267,9 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
     useEffect(() => {
         if (popoutOnly) return;
         fetchGlobalDailyProfit();
-    }, [fetchGlobalDailyProfit, popoutOnly]);
+        // Recalcula a meta global sempre que as contas mudarem (adicionar conta,
+        // novo ciclo, editar valor, mudar mãe/filha) — evita meta defasada.
+    }, [accounts, fetchGlobalDailyProfit, popoutOnly]);
 
     useEffect(() => {
         if (popoutOnly) return undefined;
@@ -1520,7 +1522,7 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
     };
 
     const profitColor = (value) =>
-        value > 0 ? 'var(--primary)' : value < 0 ? 'var(--danger)' : 'var(--text-main)';
+        value > 0 ? 'var(--money-positive)' : value < 0 ? 'var(--money-negative)' : 'var(--text-main)';
 
     const stats = [
         { label: 'Depósito Total', value: formatCurrency(totalDeposit), icon: <DollarSign size={16} /> },
@@ -2150,7 +2152,7 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
                                                 minWidth: '85px',
                                                 fontSize: '0.825rem',
                                                 fontWeight: 600,
-                                                color: isNegative ? '#ef4444' : 'var(--primary)'
+                                                color: isNegative ? 'var(--money-negative)' : 'var(--money-positive)'
                                             }}>
                                                 {formatCurrency(profitVal)}
                                             </td>

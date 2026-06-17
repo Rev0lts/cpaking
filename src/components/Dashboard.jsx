@@ -295,10 +295,10 @@ const Dashboard = ({ onNavigate, impersonatedUser, dailyGoal }) => {
     const formatCurrency = (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
 
     const mainStats = [
-        { title: 'Lucro Diário', value: formatCurrency(stats.dailyProfit), trend: stats.dailyTrend, icon: <TrendingUp size={24} />, variant: stats.dailyProfit >= 0 ? 'primary' : 'danger', valueColor: stats.dailyProfit > 0 ? 'var(--primary)' : (stats.dailyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') },
-        { title: 'Lucro Semanal', value: formatCurrency(stats.weeklyProfit), trend: stats.weeklyTrend, icon: <Calendar size={24} />, variant: stats.weeklyProfit >= 0 ? 'secondary' : 'danger', valueColor: stats.weeklyProfit > 0 ? 'var(--primary)' : (stats.weeklyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') },
-        { title: 'Lucro Mensal', value: formatCurrency(stats.monthlyProfit), trend: stats.monthlyTrend, icon: <BarChart3 size={24} />, variant: stats.monthlyProfit >= 0 ? 'accent' : 'danger', valueColor: stats.monthlyProfit > 0 ? 'var(--primary)' : (stats.monthlyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') },
-        { title: 'Lucro Anual', value: formatCurrency(stats.yearlyProfit), trend: stats.yearlyTrend, icon: <PieChart size={24} />, variant: stats.yearlyProfit >= 0 ? 'info' : 'danger', valueColor: stats.yearlyProfit > 0 ? 'var(--primary)' : (stats.yearlyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') },
+        { title: 'Lucro Diário', value: formatCurrency(stats.dailyProfit), trend: stats.dailyTrend, icon: <TrendingUp size={24} />, variant: stats.dailyProfit >= 0 ? 'primary' : 'danger', valueColor: stats.dailyProfit > 0 ? 'var(--money-positive)' : (stats.dailyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') },
+        { title: 'Lucro Semanal', value: formatCurrency(stats.weeklyProfit), trend: stats.weeklyTrend, icon: <Calendar size={24} />, variant: stats.weeklyProfit >= 0 ? 'secondary' : 'danger', valueColor: stats.weeklyProfit > 0 ? 'var(--money-positive)' : (stats.weeklyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') },
+        { title: 'Lucro Mensal', value: formatCurrency(stats.monthlyProfit), trend: stats.monthlyTrend, icon: <BarChart3 size={24} />, variant: stats.monthlyProfit >= 0 ? 'accent' : 'danger', valueColor: stats.monthlyProfit > 0 ? 'var(--money-positive)' : (stats.monthlyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') },
+        { title: 'Lucro Anual', value: formatCurrency(stats.yearlyProfit), trend: stats.yearlyTrend, icon: <PieChart size={24} />, variant: stats.yearlyProfit >= 0 ? 'info' : 'danger', valueColor: stats.yearlyProfit > 0 ? 'var(--money-positive)' : (stats.yearlyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') },
     ];
 
     const secondaryStats = [

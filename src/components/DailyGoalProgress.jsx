@@ -20,11 +20,11 @@ const DailyGoalProgress = ({ dailyProfit = 0, dailyGoal, className = '' }) => {
     const fillStyle = isNegative
         ? {
             width: `${percent}%`,
-            background: 'var(--danger)',
+            background: 'var(--money-negative)',
         }
         : {
             width: `${percent}%`,
-            background: reached ? 'var(--money-positive)' : 'var(--primary)',
+            background: 'var(--money-positive)',
         };
 
     return (
@@ -44,9 +44,9 @@ const DailyGoalProgress = ({ dailyProfit = 0, dailyGoal, className = '' }) => {
                         className="daily-goal-progress__current"
                         style={{
                             color: isNegative
-                                ? 'var(--danger)'
-                                : reached
-                                    ? 'var(--primary)'
+                                ? 'var(--money-negative)'
+                                : current > 0
+                                    ? 'var(--money-positive)'
                                     : 'var(--text-main)',
                         }}
                     >

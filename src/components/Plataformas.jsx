@@ -427,7 +427,7 @@ const Plataformas = ({ resetTrigger, impersonatedUser, dailyGoal, mode = 'active
                 </div>
                 <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: '4px' }}><TrendingUp size={12} /><span>Lucro Diário</span></div>
-                    <div style={{ fontSize: '1rem', fontWeight: 600, color: group.rawDailyProfit > 0 ? 'var(--primary)' : (group.rawDailyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') }}>{formatCurrencyBRL(group.rawDailyProfit)}</div>
+                    <div style={{ fontSize: '1rem', fontWeight: 600, color: group.rawDailyProfit > 0 ? 'var(--money-positive)' : (group.rawDailyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') }}>{formatCurrencyBRL(group.rawDailyProfit)}</div>
                 </div>
                 <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: '4px' }}><ArrowUpCircle size={12} /><span>Depósito</span></div>
@@ -435,7 +435,7 @@ const Plataformas = ({ resetTrigger, impersonatedUser, dailyGoal, mode = 'active
                 </div>
                 <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: '4px' }}><TrendingUp size={12} /><span>Lucro</span></div>
-                    <div style={{ fontSize: '1rem', fontWeight: 600, color: group.rawProfit > 0 ? 'var(--primary)' : (group.rawProfit < 0 ? 'var(--danger)' : 'var(--text-main)') }}>{formatCurrencyBRL(group.rawProfit)}</div>
+                    <div style={{ fontSize: '1rem', fontWeight: 600, color: group.rawProfit > 0 ? 'var(--money-positive)' : (group.rawProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') }}>{formatCurrencyBRL(group.rawProfit)}</div>
                 </div>
             </div>
         </div>
@@ -647,7 +647,7 @@ const Plataformas = ({ resetTrigger, impersonatedUser, dailyGoal, mode = 'active
                                             <TrendingUp size={12} />
                                             <span>Lucro Diário</span>
                                         </div>
-                                        <div style={{ fontSize: '1rem', fontWeight: 600, color: platform.rawDailyProfit > 0 ? 'var(--primary)' : (platform.rawDailyProfit < 0 ? 'var(--danger)' : 'var(--text-main)') }}>{platform.dailyProfitFormatted}</div>
+                                        <div style={{ fontSize: '1rem', fontWeight: 600, color: platform.rawDailyProfit > 0 ? 'var(--money-positive)' : (platform.rawDailyProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') }}>{platform.dailyProfitFormatted}</div>
                                     </div>
                                     <div>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: '4px' }}>
@@ -661,7 +661,7 @@ const Plataformas = ({ resetTrigger, impersonatedUser, dailyGoal, mode = 'active
                                             <TrendingUp size={12} />
                                             <span>Lucro</span>
                                         </div>
-                                        <div style={{ fontSize: '1rem', fontWeight: 600, color: platform.rawProfit > 0 ? 'var(--primary)' : (platform.rawProfit < 0 ? 'var(--danger)' : 'var(--text-main)') }}>{platform.profitFormatted}</div>
+                                        <div style={{ fontSize: '1rem', fontWeight: 600, color: platform.rawProfit > 0 ? 'var(--money-positive)' : (platform.rawProfit < 0 ? 'var(--money-negative)' : 'var(--text-main)') }}>{platform.profitFormatted}</div>
                                     </div>
                                 </div>
                             </div>

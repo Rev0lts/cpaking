@@ -48,7 +48,7 @@ const PlatformProfits = ({ platforms = [], onNavigate }) => {
                             </div>
                             <span style={{
                                 fontWeight: 700,
-                                color: p.profit > 0 ? 'var(--primary)' : (p.profit < 0 ? 'var(--danger)' : 'var(--text-main)')
+                                color: p.profit > 0 ? 'var(--money-positive)' : (p.profit < 0 ? 'var(--money-negative)' : 'var(--text-main)')
                             }}>
                                 {formatCurrency(p.profit)}
                             </span>

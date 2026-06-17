@@ -48,8 +48,8 @@ const StatCard = ({ title, value, icon, variant = 'default', size = 'medium', va
                         fontWeight: 600,
                         padding: '4px 8px',
                         borderRadius: '4px',
-                        backgroundColor: trend > 0 ? 'rgba(var(--primary-rgb), 0.1)' : (trend < 0 ? 'rgba(239, 68, 68, 0.1)' : 'rgba(255, 255, 255, 0.05)'),
-                        color: trend > 0 ? 'var(--primary)' : (trend < 0 ? 'var(--danger)' : 'var(--text-muted)')
+                        backgroundColor: trend > 0 ? 'rgba(var(--money-positive-rgb), 0.12)' : (trend < 0 ? 'rgba(var(--money-negative-rgb), 0.12)' : 'rgba(255, 255, 255, 0.05)'),
+                        color: trend > 0 ? 'var(--money-positive)' : (trend < 0 ? 'var(--money-negative)' : 'var(--text-muted)')
                     }}>
                         {trend > 0 ? '+' : ''}{trend}%
                     </div>
