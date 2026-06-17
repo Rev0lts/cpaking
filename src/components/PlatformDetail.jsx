@@ -1826,6 +1826,7 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
                                 <th style={{ textAlign: 'left', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem', minWidth: '110px' }}>CPF</th>
                                 <th style={{ textAlign: 'center', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Depósito</th>
                                 <th style={{ textAlign: 'center', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Saque</th>
+                                <th style={{ textAlign: 'center', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Baú</th>
                                 <th style={{ textAlign: 'center', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Lucro</th>
                                 <th style={{ textAlign: 'left', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Chave PIX</th>
                                 <th style={{ textAlign: 'right', padding: '8px 12px', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8rem' }}>Ações</th>
@@ -2078,8 +2079,8 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
                                     </td>
 
                                     {/* Financial Cells */}
-                                    {['deposit', 'withdraw'].map((field) => {
-                                        const nextField = field === 'deposit' ? 'withdraw' : null;
+                                    {['deposit', 'withdraw', 'chest'].map((field) => {
+                                        const nextField = field === 'deposit' ? 'withdraw' : (field === 'withdraw' ? 'chest' : null);
                                         return (
                                             <td
                                                 key={field}
@@ -2140,7 +2141,7 @@ const PlatformDetail = ({ platform, onBack, invalidateCache, popoutOnly = null, 
                                     })}
                                     {/* Lucro Cell */}
                                     {(() => {
-                                        const profitVal = parseCurrency(acc.withdraw) - parseCurrency(acc.deposit);
+                                        const profitVal = parseCurrency(acc.withdraw) + parseCurrency(acc.chest) - parseCurrency(acc.deposit);
                                         const isNegative = profitVal < 0;
                                         return (
                                             <td style={{
